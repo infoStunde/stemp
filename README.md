@@ -1,1 +1,1 @@
-﻿# stemp your dicument with a personal stemp text
+﻿# stemp your document with a personal stemp text
