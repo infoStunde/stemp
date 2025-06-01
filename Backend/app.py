@@ -3,6 +3,7 @@ from flask_cors import CORS
 from flask import send_file
 from pdf2image import convert_from_path
 from PIL import ImageDraw, ImageFont
+import platform
 import os
 import io
 
@@ -36,7 +37,14 @@ def get_file(filename):
 def preview_pdf(filename):
     pdf_path = os.path.join(UPLOAD_FOLDER, filename)
     # Windows: poppler_path=r"C:\poppler\Library\bin"
-    images = convert_from_path(pdf_path, first_page=1, last_page=1, size=1000, poppler_path=r"./../Lib/poppler-24.08.0/Library/bin")
+    if platform.system() == "Windows":
+        images = convert_from_path(
+            pdf_path, first_page=1, last_page=1, size=1000,
+            poppler_path=r"C:\Users\Dmitrij\venv\Lib\poppler-24.08.0\Library\bin"
+        )
+    else:
+        images = convert_from_path(pdf_path, first_page=1, last_page=1, size=1000)
+   
     img = images[0]
     draw = ImageDraw.Draw(img)
 
