@@ -36,7 +36,7 @@ def get_file(filename):
 def preview_pdf(filename):
     pdf_path = os.path.join(UPLOAD_FOLDER, filename)
     # Windows: poppler_path=r"C:\poppler\Library\bin"
-    images = convert_from_path(pdf_path, first_page=1, last_page=1, size=1000, poppler_path=r"C:\Users\Dmitrij\venv\Lib\poppler-24.08.0\Library\bin")
+    images = convert_from_path(pdf_path, first_page=1, last_page=1, size=1000, poppler_path=r"./../Lib/poppler-24.08.0/Library/bin")
     img = images[0]
     draw = ImageDraw.Draw(img)
 
